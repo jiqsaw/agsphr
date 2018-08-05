@@ -7,7 +7,8 @@ import { HttpClientModule } from '../../../node_modules/@angular/common/http';
 import { ResultsComponent } from './components/results/results.component';
 import { SearchComponent } from './components/search/search.component';
 import { WeatherEffects } from './store/effects/weather';
-import { reducer, weatherReducerFractal } from './store/reducers/weather';
+import { reducer } from './store/reducers/weather';
+import { weatherReducerFractal } from './store/selectors/weather';
 import { WeatherContainer } from './weather.container';
 import { WeatherService } from './weather.service';
 
