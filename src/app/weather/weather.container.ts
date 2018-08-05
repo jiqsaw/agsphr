@@ -1,16 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '../../../node_modules/@ngrx/store';
+import * as fromWeatherActions from '../weather/store/actions/weather';
+import * as fromWeatherStore from '../weather/store/reducers/weather';
+
 
 @Component({
   selector: 'app-weather',
   template: `
-  <app-search></app-search>
-  <app-results></app-results>  `
+  <app-search [isLoading$]="isLoading$" (searchSubmit)="citySearch($event)"></app-search>
+  <app-results [data$]="data$"></app-results>  `
 })
 export class WeatherContainer {
 
-  constructor() {}
+  data$ = this.store.select(fromWeatherStore.getWeather);
+  isLoading$ = this.store.select(fromWeatherStore.getLoading);
 
-  citySearch() {
-    // TO BE IMPLMENTED
+  constructor(
+    private store: Store<fromWeatherStore.State>,
+  ) {}
+
+  citySearch(city: string) {
+
+    this.store.dispatch(new fromWeatherActions.GetWeatherByCityName(
+      {
+        city: city
+      }));
+
   }
 }

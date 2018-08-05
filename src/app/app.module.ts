@@ -1,9 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { EffectsModule } from '../../node_modules/@ngrx/effects';
+import { StoreModule } from '../../node_modules/@ngrx/store';
+import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { WeatherModule } from './weather/weather.module';
 
-import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    WeatherModule
+    WeatherModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]
