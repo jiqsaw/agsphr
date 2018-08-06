@@ -19,14 +19,14 @@ export class WeatherEffects {
   public constructor(
     private actions$: Actions,
     private service: WeatherService
-) { }
+  ) { }
 
   @Effect()
   getCityByName$: Observable<Action> = this.actions$
     .ofType(fromWeatherActions.GET_WEATHER_BY_CITY_NAME)
     .map((action: fromWeatherActions.GetWeatherByCityName) => action.payload)
     .switchMap((payload) => this.service.searchWeatherForCity(payload.city)
-      .map((data: Weather) => new fromWeatherActions.GetWeatherByCityNameSuccess(data))
-      .catch((error: HttpErrorResponse) => Observable.of(new fromWeatherActions.WeatherError(error))));
+    .map((data: Weather) => new fromWeatherActions.GetWeatherByCityNameSuccess(data))
+    .catch((error: HttpErrorResponse) => Observable.of(new fromWeatherActions.WeatherError(error))));
 
 }

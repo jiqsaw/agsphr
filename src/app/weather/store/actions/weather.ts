@@ -1,6 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Action } from '@ngrx/store';
-import { Weather } from '../../../model/weather';
 
 export const WEATHER_ERROR = '[WEATHER] Error';
 
@@ -21,7 +20,7 @@ export class GetWeatherByCityName implements Action {
 
 export class GetWeatherByCityNameSuccess implements Action {
   readonly type = GET_WEATHER_BY_CITY_NAME_SUCCESS;
-  constructor(public payload: Weather) { }
+  constructor(public payload: any) { }
 }
 
 export type Actions

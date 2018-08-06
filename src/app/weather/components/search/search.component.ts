@@ -15,7 +15,9 @@ export class SearchComponent {
   constructor() { }
 
   search() {
-    this.searchSubmit.emit(this.city);
-    this.city = '';
+    if (this.city.length >= 2) {
+      this.searchSubmit.emit(this.city);
+      this.city = '';
+    }
   }
 }
